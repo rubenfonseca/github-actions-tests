@@ -21,3 +21,8 @@ jobs:
       - name: jobName
         id: jobName
         run: echo ::set-output name=output::${{ matrix.option }}
+
+  test2:
+    needs: test
+    steps:
+      - run: echo ${{ needs.test.outputs.test }}
