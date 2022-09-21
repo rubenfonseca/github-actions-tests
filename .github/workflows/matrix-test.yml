@@ -1,0 +1,23 @@
+name: Matrix test
+
+on:
+  workflow_call:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      test: ${{ steps.jobName.outputs.output }}
+    strategy:
+      fail-fast: false
+      matrix:
+        option:
+          [
+            "1",
+            "3"
+          ]
+    steps:
+      - name: jobName
+        id: jobName
+        run: echo ::set-output name=output::${{ matrix.option }}
