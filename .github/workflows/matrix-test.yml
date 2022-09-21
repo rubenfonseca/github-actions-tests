@@ -29,4 +29,4 @@ jobs:
     needs: test
     steps:
       - run: echo ${{ needs.test.outputs.test }}
-      - run: echo output.txt
+      - run: cat output.txt
