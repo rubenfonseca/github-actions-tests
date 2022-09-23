@@ -34,4 +34,4 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: outputs
-      - run: ls -la outputs/
+      - run: ls -la 
