@@ -35,3 +35,12 @@ jobs:
         with:
           name: outputs
       - run: ls -la 
+
+  test3:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: non-exist
+      - run: ls -la 
