@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir outputs
           echo ${{ matrix.option }} > outputs/output-${{ matrix.option }}.txt
-      - uses: actions/upload-artifacts@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: outputs
           path: outputs/output-${{ matrix.option }}.txt
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - uses: actions/download-artifacts@v3
+      - uses: actions/download-artifact@v3
         with:
           name: outputs
       - run: ls -la outputs/
