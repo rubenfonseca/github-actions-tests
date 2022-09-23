@@ -18,15 +18,20 @@ jobs:
             "3"
           ]
     steps:
-      - name: jobName
-        id: jobName
-        run: echo ::set-output name=output::${{ matrix.option }}
       - name: write
-        run: echo ${{ matrix.option }} > output.txt
+        run: |
+          mkdir outputs
+          echo ${{ matrix.option }} > outputs/output-${{ matrix.option }}.txt
+      - uses: actions/upload-artifacts@v3
+        with:
+          name: outputs
+          path: outputs/output-${{ matrix.option }}.txt
 
   test2:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - run: echo ${{ needs.test.outputs.test }}
-      - run: cat output.txt
+      - uses: actions/download-artifacts@v3
+        with:
+          name: outputs
+      - run: ls -la outputs/
