@@ -34,13 +34,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: outputs
-      - run: ls -la 
+          path: here-is-the-output/
+      - run: ls -laR 
 
-  test3:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: non-exist
-      - run: ls -la 
