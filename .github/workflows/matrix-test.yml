@@ -15,4 +15,4 @@ jobs:
         uses: docker/setup-buildx-action@v1
       - name: Test docker
         run: |
-          docker run --rm -it --platform linux/arm64 hello-world
+          docker run --rm --platform linux/arm64 hello-world
